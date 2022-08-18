@@ -2,6 +2,7 @@
 NAME = so_long
 
 SRCS = teste.c\
+	   utils_minilib.c\
 
 OBJ = $(SRCS:.c=.o)
 
