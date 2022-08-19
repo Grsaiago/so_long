@@ -3,6 +3,8 @@ NAME = so_long
 
 SRCS = teste.c\
 	   utils_minilib.c\
+	   get_next_line.c\
+	   get_next_line_utils.c\
 
 OBJ = $(SRCS:.c=.o)
 
@@ -22,8 +24,8 @@ fclean: clean
 %.o: %.c
 	$(CC) $(FLAGS) -Imlx -c $< -o $@
 
-$(NAME): $(OBJ)
-	$(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+$(NAME): $(OBJ) 
+	$(CC) -o $(NAME) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit 
 
 t: all
 	./$(NAME)

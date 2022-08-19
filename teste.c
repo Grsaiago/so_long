@@ -6,30 +6,11 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 13:12:03 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/19 13:46:34 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/08/19 17:41:51 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-
-typedef struct s_images
-{
-	void	*img_tile;
-	void	*img_wall;
-	void	*img_coin;
-	void	*img_door_open;
-	void	*img_door_closed;
-	void	*img_player;
-	void	*img_enemy;
-	int		img_height;
-	int		img_width;
-} t_img;
-
-typedef struct	s_data
-{
-	void	*mlx_ptr;
-	void	*win_ptr;
-}	t_data;
+#include "so_long.h"
 
 void	initialize_images(t_img *s_img, t_data s_mlx, int height, int width);
 
@@ -37,7 +18,7 @@ void	paint_bg(t_data s_mlx, t_img s_img);
 
 int	trgb(int t, int r, int g, int b);
 
-int	main(void)
+int	main(int argc, char *argv[])
 {
 	t_img	s_img;
 	t_data	s_mlx;
@@ -45,6 +26,11 @@ int	main(void)
 	int		size_y;
 	int		height;
 	int		width;
+	int		fd;
+
+	if (argc != 2)
+		return (write (1, "quantidade incorreta de args.", 29));
+	fd = open(argv[1], O_RDONLY); 
 
 	height = 91;
 	width = 91;
