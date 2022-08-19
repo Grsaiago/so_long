@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 13:12:03 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/19 13:27:05 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/08/19 13:46:34 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ typedef struct s_images
 	void	*img_coin;
 	void	*img_door_open;
 	void	*img_door_closed;
+	void	*img_player;
+	void	*img_enemy;
 	int		img_height;
 	int		img_width;
 } t_img;
@@ -64,6 +66,8 @@ void	initialize_images(t_img *s_img, t_data s_mlx, int height, int width)
 	s_img->img_coin = mlx_xpm_file_to_image(s_mlx.mlx_ptr, "./assets/coin.xpm", &s_img->img_height, &s_img->img_width);
 	s_img->img_door_open = mlx_xpm_file_to_image(s_mlx.mlx_ptr, "./assets/door_open.xpm", &s_img->img_height, &s_img->img_width); 
 	s_img->img_door_closed = mlx_xpm_file_to_image(s_mlx.mlx_ptr, "./assets/door_closed.xpm", &s_img->img_height, &s_img->img_width); 
+	s_img->img_player = mlx_xpm_file_to_image(s_mlx.mlx_ptr, "./assets/player.xpm", &s_img->img_height, &s_img->img_width); 
+	s_img->img_enemy = mlx_xpm_file_to_image(s_mlx.mlx_ptr, "./assets/enemy.xpm", &s_img->img_height, &s_img->img_width); 
 
 }
 void	paint_bg(t_data s_mlx, t_img s_img)
@@ -87,7 +91,7 @@ void	paint_bg(t_data s_mlx, t_img s_img)
 		i = 0;
 		while (i < (squares_x - 1))
 		{
-			mlx_put_image_to_window(s_mlx.mlx_ptr, s_mlx.win_ptr, s_img.img_tile, pos_x, pos_y);
+			mlx_put_image_to_window(s_mlx.mlx_ptr, s_mlx.win_ptr, s_img.img_door_open, pos_x, pos_y);
 			pos_x += s_img.img_width;
 			i++;
 		}
