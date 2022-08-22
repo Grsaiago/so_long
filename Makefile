@@ -1,16 +1,17 @@
 
 NAME = so_long
 
-SRCS = teste.c\
+SRCS = so_long.c\
 	   utils_minilib.c\
 	   get_next_line.c\
 	   get_next_line_utils.c\
+	   utils_so_long.c\
 
 OBJ = $(SRCS:.c=.o)
 
 RM = rm -f
 ARC = ar -rcs
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra -g
 CC = cc
 
 
@@ -27,8 +28,10 @@ fclean: clean
 $(NAME): $(OBJ) 
 	$(CC) -o $(NAME) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit 
 
+re: clean all
+
 t: all
-	./$(NAME)
+	./$(NAME) ./map.ber
 
 .PHONY:
 	all clean re fclean

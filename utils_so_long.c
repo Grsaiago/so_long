@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   teste.c                                            :+:      :+:    :+:   */
+/*   utils_so_long.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/22 10:51:04 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/22 14:00:53 by gsaiago          ###   ########.fr       */
+/*   Created: 2022/08/22 11:18:32 by gsaiago           #+#    #+#             */
+/*   Updated: 2022/08/22 14:03:56 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,20 +64,6 @@ int	validate_map(t_data *s_data, char *map)
 		}
 		aux = get_next_line(fd);
 	}
-	close(fd);
 	free(aux);
-	return (0);
+	return (close(fd));
 }
-
-/*
-int	main(void)
-{
-	char	*map = "./map.ber";
-	int		valid;
-	t_data	s_data;
-
-	valid = validate_map(&s_data, map);
-	printf("A quantidade de colunas do arquivo .ber no path |%s| é > |%d| e o valid é > |%d|\n", map, s_data.size_x, valid);
-	printf("A quantidade de linhas do arquivo .ber no path |%s| é > |%d| e o valid é > |%d|\n\n", map, s_data.size_y, valid);
-}
-*/

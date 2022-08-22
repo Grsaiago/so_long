@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 17:16:03 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/19 17:56:12 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/08/22 14:01:28 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ typedef struct	s_data
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
+	int		size_x;
+	int		size_y;
+	char	*map_name;
 } t_data;
 
 // ---GNL FUNCTIONS--- //
@@ -51,5 +54,10 @@ char	*ft_strjoin_gnl(char *s1, char *s2);
 char	*ft_staticptr(char *buffer);
 char	*ft_returnptr(char *buffer);
 char	*ft_strchr(const char *s, int c);
+
+// ---SO_LONG FUNCTIONS--- //
+
+int	count_lines(char *map);
+int	validate_map(t_data *s_data, char *map);
 
 #endif
