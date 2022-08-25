@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 13:12:03 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/22 14:26:13 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/08/22 16:05:19 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	initialize_images(t_img *s_img, t_data s_mlx);
 
-void	paint_bg(t_data s_mlx, t_img s_img);
+int		paint_bg(t_data s_mlx, t_img s_img);
 
 int	main(int argc, char *argv[])
 {
@@ -48,33 +48,41 @@ void	initialize_images(t_img *s_img, t_data s_mlx)
 
 
 
-void	paint_bg(t_data s_mlx, t_img s_img)
+int	paint_bg(t_data s_mlx, t_img s_img)
 {
-	int	squares_x;
-	int	squares_y;
-	int	pos_x;
-	int	pos_y;
-	int	i;
-	int j;
+	int		pos_x;
+	int		pos_y;
+	int		i;
+	int		fd;
+	char	*aux;
 
-	j = 0;
-	pos_x = 1;
+	fd = open("./map.ber", O_RDONLY);
+	if (fd < 2)
+		return (-1);
 	pos_y = 1;
-	squares_x = s_img.img_width;
-	squares_y = s_img.img_height;
-
-	while (j < (squares_y - 1))
+	aux = get_next_line(fd);
+	while(aux)
 	{
 		pos_x = 1;
 		i = 0;
-		while (i < (squares_x - 1))
+		while(aux[i] != '\n')
 		{
-			mlx_put_image_to_window(s_mlx.mlx_ptr, s_mlx.win_ptr, s_img.img_door_open, pos_x, pos_y);
+			if (aux[i] == '0')
+				mlx_put_image_to_window(s_mlx.mlx_ptr, s_mlx.win_ptr, s_img.img_tile, pos_x, pos_y);
+			else if (aux[i] == '1')
+				mlx_put_image_to_window(s_mlx.mlx_ptr, s_mlx.win_ptr, s_img.img_wall, pos_x, pos_y);
+			else if (aux[i] == 'C')
+				mlx_put_image_to_window(s_mlx.mlx_ptr, s_mlx.win_ptr, s_img.img_coin, pos_x, pos_y);
+			else if (aux[i] == 'E')
+				mlx_put_image_to_window(s_mlx.mlx_ptr, s_mlx.win_ptr, s_img.img_door_closed, pos_x, pos_y);
+			else if (aux[i] == 'P')
+				mlx_put_image_to_window(s_mlx.mlx_ptr, s_mlx.win_ptr, s_img.img_player, pos_x, pos_y);
 			pos_x += s_img.img_width;
 			i++;
 		}
 		pos_y += s_img.img_height;
-		j++;
+		aux = get_next_line(fd);
 	}
-	return ;
+	free(aux);
+	return (0);
 }

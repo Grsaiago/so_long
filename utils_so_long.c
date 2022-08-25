@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 11:18:32 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/22 14:03:56 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/08/22 16:49:59 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	count_lines(char *map)
 	return (count);
 }
 
-int	validate_map(t_data *s_data, char *map)
+int	validate_map_dimentions(t_data *s_data, char *map)
 {
 	char	*aux;
 	int		fd;
