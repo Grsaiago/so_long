@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 17:16:03 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/24 23:17:38 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/08/25 00:18:16 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ char	*ft_strchr(const char *s, int c);
 // ---SO_LONG FUNCTIONS--- //
 
 int	map_count_lines(char *map);
-int	map_validate_dimentions(t_data *s_data, char *map, int fd);
+int	map_validate_dimentions(t_data *s_data, int fd);
 int	map_validate_lines(char *line, int fd, t_data s_data);
 int	map_validate_components(t_data s_data, char *map);
 

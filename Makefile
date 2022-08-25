@@ -1,7 +1,7 @@
 
 NAME = so_long
 
-SRCS = tes.c\
+SRCS = teste.c\
 	   utils_minilib.c\
 	   get_next_line.c\
 	   get_next_line_utils.c\
@@ -11,7 +11,7 @@ OBJ = $(SRCS:.c=.o)
 
 RM = rm -f
 ARC = ar -rcs
-FLAGS = -g
+FLAGS = -Wall -Wextra -Werror -g
 CC = cc
 
 

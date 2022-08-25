@@ -5,112 +5,150 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/22 16:15:39 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/22 17:18:00 by gsaiago          ###   ########.fr       */
+/*   Created: 2022/08/24 16:42:35 by gsaiago           #+#    #+#             */
+/*   Updated: 2022/08/25 00:50:44 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+//Dimensions && Content
+//count -> validate -> store
+
 #include "so_long.h"
 
-int	map_count_lines(char *map)
+int	map_validate_dimentions(t_data *s_data, int fd)
 {
-	char	*aux;
-	int		valid;
-	int		count;
-	int		fd;
-
-	count = 0;
-	aux = ft_calloc(sizeof(char), 2);
-	if (!aux)
-		return (-1);
-	fd = open(map, O_RDONLY);
-	if (fd < 0)
-		return (-1);
-	while (1)
-	{
-		valid = read(fd, aux, 1);
-		if (valid <= 0)
-			break ;
-		if (aux[0] == '\n')
-			count++;
-	}
-	free(aux);
-	close(fd);
-	return (count);
-}
-
-int	map_validate_dimentions(t_data *s_data, char *map)
-{
-	char	*aux;
-	int		fd;
-
-	fd = open(map, O_RDONLY);
-	if (fd < 0)
-		return (-1);
-	aux = get_next_line(fd);
-	if (!aux)
-		return (-1);
-	s_data->size_x = ft_strlen(aux) - 1;
-	s_data->size_y = map_count_lines(map);
-	if (s_data->size_y < 4)
-		return (-1);
-	while (aux)
-	{
-		if (s_data->size_x != ((int)ft_strlen(aux) - 1))
-		{
-			close(fd);
-			free(aux);
-			return (-1);
-		}
-		aux = get_next_line(fd);
-	}
-	free(aux);
-	return (close(fd));
-}
-
-int	map_validate_lines(char *line, int fd, t_data s_data)
-{
-	int	i;
-	int	flag;
-
-	flag = 1;
-	while (line)
-	{
-		if (line[0] != '1' || line[s_data.size_x - 1] != '1')
-			return (-1);
-		if (flag == 1 || flag == s_data.size_y)
-		{
-			i = 0;
-			while (i < s_data.size_x)
-			{
-				if (line[i] != '1')
-					return (-1);
-				i++;
-			}
-		}
-		line = get_next_line(fd);
-		flag++;
-	}
-	free(line);
-	return (0);
-}
-int	map_validate_components(t_data s_data, char *map)
-{
-	int		fd;
 	char	*line;
-	
-	fd = open(map, O_RDONLY);
-	if (fd < 0)
-		return (-1);
+
 	line = get_next_line(fd);
-	if (map_validate_lines(line, fd, s_data) < 0)
+	s_data->size_x = ft_strlen(line) - 1;
+	while(line)
 	{
+		if (s_data->size_x != (int)ft_strlen(line) - 1 || s_data->size_x < 5)
+		{
+			free(line);
+			close(fd);
+			return (-1);
+		}
+		s_data->size_y++;
+		line = get_next_line(fd);
+	}
+	if (s_data->size_y < 3)
+	{
+		free(line);
 		close(fd);
 		return (-1);
 	}
-	return(close(fd));
+	free(line);
+	return (close(fd));
 }
 
+int	map_validate_floor_ceiling(t_data *s_data, char *line, int flag, int fd)
+{
+	int	i;
+	
+	i = 0;
+	while (i < s_data->size_x)
+	{
+		if (line[i] != '1')
+		{
+			close(fd);
+			free(line);
+			return(-1);
+		}
+		i++;
+	}
+	return (flag);
+}
+
+int map_validate_borders(t_data *s_data, char *line, int flag, int fd)
+{
+	if (line[0] != '1' || line[s_data->size_x - 1] != '1')
+	{
+		close(fd);
+		free(line);
+		return(-1);
+	}
+	return (flag);
+}
+
+int	map_validate_outline(t_data *s_data, char *map)
+{
+	int		fd;
+	char	*line;
+	int		i;
+
+	fd = open(map, O_RDONLY);
+	if (fd < 2)
+		return (-1);
+	line = get_next_line(fd);
+	i = 0;
+	while (i < s_data->size_y)
+	{
+		if (i == 0 || i == (s_data->size_y - 1))
+			i = map_validate_floor_ceiling(s_data, line, i, fd);
+		else
+			i = map_validate_borders(s_data, line, i, fd);
+		if (i < 0)
+			return (-1);
+		line = get_next_line(fd);
+		i++;
+	}
+	free(line);
+	return (close(fd));
+}
+
+int count_components(char c)
+{
+	static int	count;
+
+	if (c == 'E')
+		count = count | 1;
+	else if (c == 'C')
+		count = count | (1 << 1);
+	else if (c == 'P')
+		count = count | (1 << 2);
+	return (count);
+}
+
+int validate_components(t_data *s_data, char *map)
+{
+	int		fd;
+	int		i;
+	char	*line;
+	int		flag;
+
+	fd = open(map, O_RDONLY);
+	if (fd < 2)
+		return (-1);
+	flag = 0;
+	line = get_next_line(fd);
+	while (line)
+	{
+		i = -1;
+		while (++i < (s_data->size_x))
+			flag = count_components(line[i]);
+		line = get_next_line(fd);
+	}
+	free(line);
+	close(fd);
+	return (flag);
+}
+
+int	validate_map(t_data *s_data, char *map)
+{
+	int	fd;
+
+	fd = open(map, O_RDONLY);
+	if (fd < 2)
+		return (-1);
+	if (map_validate_dimentions(s_data, fd) < 0)
+		return (-1);
+	if (map_validate_outline(s_data, map) < 0)
+		return (-1);
+	if (validate_components(s_data, map) < 7)
+	   return (-1);	
+	return (0);
+}
 
 int	main(void)
 {
@@ -119,10 +157,10 @@ int	main(void)
 	t_data	s_data;
 
 
-	valid = map_validate_dimentions(&s_data, map);
-	printf("A quantidade de colunas do arquivo .ber no path |%s| é > |%d| e o valid é > |%d|\n", map, s_data.size_x, valid);
-	printf("A quantidade de linhas do arquivo .ber no path |%s| é > |%d| e o valid é > |%d|\n\n", map, s_data.size_y, valid);
-	valid = map_validate_components(s_data, map);
-	printf("O retorno de validate_map_components é > |%d|", valid);
+	valid = validate_map(&s_data, map);
+	printf("A quantidade de colunas do arquivo .ber no path |%s| é > |%d|\n", map, s_data.size_x);
+	printf("A quantidade de linhas do arquivo .ber no path |%s| é > |%d|\n", map, s_data.size_y);
+	printf("O retorno da função é > |%d|\n", valid);
+	printf("O retorno de map_validate é > |%d|\n", valid);
 }
 
