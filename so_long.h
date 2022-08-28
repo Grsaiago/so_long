@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 17:16:03 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/25 00:18:16 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/08/28 18:53:24 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <unistd.h>
-#include <mlx.h>
+// #include <mlx.h>
 #include <stdlib.h>
 
 #ifndef SO_LONG_H
