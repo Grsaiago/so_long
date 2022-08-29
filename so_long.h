@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 17:16:03 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/28 18:53:24 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/08/29 15:28:00 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <unistd.h>
-// #include <mlx.h>
+#include <mlx.h>
 #include <stdlib.h>
 
 #ifndef SO_LONG_H
@@ -32,16 +32,20 @@ typedef struct s_images
 	void	*img_enemy;
 	int		img_height;
 	int		img_width;
-} t_img;
+}	t_img;
 
-typedef struct	s_data
+typedef struct s_data
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
 	int		size_x;
 	int		size_y;
+	int		map_x;
+	int		map_y;
+	int		player_x;
+	int		player_y;
 	char	*map_name;
-} t_data;
+}	t_data;
 
 // ---GNL FUNCTIONS--- //
 
@@ -57,9 +61,8 @@ char	*ft_strchr(const char *s, int c);
 
 // ---SO_LONG FUNCTIONS--- //
 
-int	map_count_lines(char *map);
-int	map_validate_dimentions(t_data *s_data, int fd);
-int	map_validate_lines(char *line, int fd, t_data s_data);
-int	map_validate_components(t_data s_data, char *map);
-
+int		map_count_lines(char *map);
+int		map_validate_dimentions(t_data *s_data, int fd);
+int		map_validate_lines(char *line, int fd, t_data s_data);
+int		map_validate_components(t_data s_data, char *map);
 #endif

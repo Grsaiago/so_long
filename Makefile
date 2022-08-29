@@ -1,11 +1,12 @@
 
 NAME = so_long
 
-SRCS = teste.c\
+SRCS = utils_so_long_map.c\
 	   utils_minilib.c\
 	   get_next_line.c\
 	   get_next_line_utils.c\
-#	   utils_so_long.c\
+#	   utils_so_long_map.c\
+#	   so_long.c
 
 OBJ = $(SRCS:.c=.o)
 
@@ -30,8 +31,10 @@ $(NAME): $(OBJ)
 
 re: clean all
 
-t: all
+t: re
 	./$(NAME) ./map.ber
+val: re
+	valgrind --leak-check=full --suppressions=suppression_valgrind ./$(NAME)
 
 .PHONY:
 	all clean re fclean
