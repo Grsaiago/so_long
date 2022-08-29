@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 16:42:35 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/29 15:23:41 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/08/29 16:30:20 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,18 @@
 //count -> validate -> store
 
 #include "so_long.h"
+
+int	map_validate_name(t_data *s_data, char *map)
+{
+	int	len;
+
+	len = ft_strlen(map);
+	if (map[len - 1] != 'r' || map[len - 2] != 'e' 
+		|| map[len - 3] != 'b' || map[len - 4] != '.')
+		return (-1);
+	s_data->map_name = map;
+	return (0);
+}
 
 int	map_validate_dimentions(t_data *s_data, int fd)
 {
@@ -71,13 +83,13 @@ int	map_validate_borders(t_data *s_data, char *line, int flag, int fd)
 	return (flag);
 }
 
-int	map_validate_outline(t_data *s_data, char *map)
+int	map_validate_outline(t_data *s_data)
 {
 	int		fd;
 	char	*line;
 	int		i;
 
-	fd = open(map, O_RDONLY);
+	fd = open(s_data->map_name, O_RDONLY);
 	if (fd < 2)
 		return (-1);
 	line = get_next_line(fd);
@@ -111,14 +123,14 @@ int	count_components(char c)
 	return (count);
 }
 
-int	validate_components(t_data *s_data, char *map)
+int	validate_components(t_data *s_data)
 {
 	int		fd;
 	int		i;
 	char	*line;
 	int		flag;
 
-	fd = open(map, O_RDONLY);
+	fd = open(s_data->map_name, O_RDONLY);
 	if (fd < 2)
 		return (-1);
 	flag = 0;
@@ -140,17 +152,20 @@ int	validate_map(t_data *s_data, char *map)
 {
 	int	fd;
 
-	fd = open(map, O_RDONLY);
+	if (map_validate_name(s_data, map) < 0)
+		return (-1);
+	fd = open(s_data->map_name, O_RDONLY);
 	if (fd < 2)
 		return (-1);
 	if (map_validate_dimentions(s_data, fd) < 0)
 		return (-1);
-	if (map_validate_outline(s_data, map) < 0)
+	if (map_validate_outline(s_data) < 0)
 		return (-1);
-	if (validate_components(s_data, map) != 7)
+	if (validate_components(s_data) != 7)
 		 return (-1);	
 	return (0);
 }
+
 
 int	main(void)
 {

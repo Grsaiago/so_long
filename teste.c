@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   teste2.c                                           :+:      :+:    :+:   */
+/*   teste.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 13:32:19 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/29 10:56:26 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/08/29 16:12:10 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ char **create_map_array(t_data *s_data)
 	return (array);
 }
 
+
+/*
 int	main(void)
 {
 	t_data s_data;
@@ -46,6 +48,7 @@ int	main(void)
 	array = create_map_array(&s_data);
 	while (array[++i])
 		free (array[i]);
-	free (array);
+	free(array);
 	return (0);
 }
+*/
