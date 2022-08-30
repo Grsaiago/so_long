@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 17:16:03 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/29 16:28:32 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/08/30 15:22:21 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,6 @@
 # define SO_LONG_H
 
 // ---SO_LONG STRUCTS--- //
-typedef struct s_images
-{
-	void	*img_tile;
-	void	*img_wall;
-	void	*img_coin;
-	void	*img_door_open;
-	void	*img_door_closed;
-	void	*img_player;
-	void	*img_enemy;
-	int		img_height;
-	int		img_width;
-}	t_img;
 
 typedef struct s_data
 {
@@ -40,11 +28,20 @@ typedef struct s_data
 	void	*win_ptr;
 	int		size_x;
 	int		size_y;
-	int		map_x;
-	int		map_y;
-	int		player_x;
-	int		player_y;
+	int		pos_x;
+	int		pos_y;
+	int		c_count;
 	char	*map_name;
+	char	**map_array;
+// parte de imagens do struct:
+	void	*i_tile;
+	void	*i_wall;
+	void	*i_coin;
+	void	*i_door_open;
+	void	*i_door_closed;
+	void	*i_player;
+	int		i_height;
+	int		i_width;
 }	t_data;
 
 // ---GNL FUNCTIONS--- //
@@ -62,11 +59,11 @@ char	*ft_strchr(const char *s, int c);
 // ---SO_LONG FUNCTIONS--- //
 
 int		map_validate_name(t_data *s_data, char *map);
-int		map_validate_dimentions(t_data *s_data, int fd);
+int		map_validate_dimentions(t_data *s_data);
 int		map_validate_floor_ceiling(t_data *s_data, char *line, int flag, int fd);
 int		map_validate_borders(t_data *s_data, char *line, int flag, int fd);
 int		map_validate_outline(t_data *s_data);
-int		count_components(char c);
+int		count_components(char c, t_data *s_data);
 int		map_validate_components(t_data s_data);
 int		validate_map(t_data *s_data, char *map);
 char 	**create_map_array(t_data *s_data);

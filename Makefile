@@ -1,12 +1,21 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/08/30 14:24:57 by gsaiago           #+#    #+#              #
+#    Updated: 2022/08/30 15:12:04 by gsaiago          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
 NAME = so_long
 
-SRCS = utils_so_long_map.c\
-	   utils_minilib.c\
+SRCS = so_long.c\
 	   get_next_line.c\
 	   get_next_line_utils.c\
-#	   utils_so_long_map.c\
-#	   so_long.c
+	   utils_so_long_map.c\
 
 OBJ = $(SRCS:.c=.o)
 
@@ -33,8 +42,11 @@ re: clean all
 
 t: re
 	./$(NAME) ./map.ber
+
+lldb: re
+	lldb $(NAME) ./map.ber
 val: re
 	valgrind --leak-check=full --suppressions=suppression_valgrind ./$(NAME)
 
 .PHONY:
-	all clean re fclean
+	all clean re fclean val lldb t

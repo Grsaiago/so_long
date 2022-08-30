@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 16:42:35 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/29 16:30:20 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/08/30 15:22:51 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,12 @@ int	map_validate_name(t_data *s_data, char *map)
 	return (0);
 }
 
-int	map_validate_dimentions(t_data *s_data, int fd)
+int	map_validate_dimentions(t_data *s_data)
 {
 	char	*line;
+	int		fd;
 
+	fd = open(s_data->map_name, O_RDONLY);
 	line = get_next_line(fd);
 	s_data->size_x = ft_strlen(line) - 1;
 	while (line)
@@ -110,15 +112,18 @@ int	map_validate_outline(t_data *s_data)
 	return (close(fd));
 }
 
-int	count_components(char c)
+int	count_components(char c, t_data *s_data)
 {
 	static int	count;
 
-	if (c == 'E')
+	if (c == 'P')
 		count++;
 	else if (c == 'C')
+	{
 		count = count | (1 << 1);
-	else if (c == 'P')
+		s_data->c_count++;
+	}
+	else if (c == 'E')
 		count = count | (1 << 2);
 	return (count);
 }
@@ -139,7 +144,7 @@ int	validate_components(t_data *s_data)
 	{
 		i = -1;
 		while (++i < (s_data->size_x))
-			flag = count_components(line[i]);
+			flag = count_components(line[i], s_data);
 		free(line);
 		line = get_next_line(fd);
 	}
@@ -150,23 +155,41 @@ int	validate_components(t_data *s_data)
 
 int	validate_map(t_data *s_data, char *map)
 {
-	int	fd;
-
 	if (map_validate_name(s_data, map) < 0)
 		return (-1);
-	fd = open(s_data->map_name, O_RDONLY);
-	if (fd < 2)
-		return (-1);
-	if (map_validate_dimentions(s_data, fd) < 0)
+	if (map_validate_dimentions(s_data) < 0)
 		return (-1);
 	if (map_validate_outline(s_data) < 0)
 		return (-1);
 	if (validate_components(s_data) != 7)
-		 return (-1);	
+		 return (-1);
 	return (0);
 }
 
+char **create_map_array(t_data *s_data)
+{
+	int		i;
+	int		fd;
+	char	**array;
+	
+	
+	array = ft_calloc(s_data->size_y + 1, sizeof(char *));
+	if (!array)
+			return(NULL);
+	fd = open(s_data->map_name, O_RDONLY);
+	if (fd < 2)
+			return(NULL);
+	i = 0;
+	while(i < s_data->size_y)
+	{
+		array[i] = get_next_line(fd);
+		i++;
+	}
+	close(fd);
+	return (array);
+}
 
+/*
 int	main(void)
 {
 	char	*map = "./map.ber";
@@ -179,3 +202,4 @@ int	main(void)
 	printf("O retorno da função é > |%d|\n", valid);
 	printf("O retorno de map_validate é > |%d|\n", valid);
 }
+*/
