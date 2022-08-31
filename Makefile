@@ -6,16 +6,17 @@
 #    By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/30 14:24:57 by gsaiago           #+#    #+#              #
-#    Updated: 2022/08/30 15:12:04 by gsaiago          ###   ########.fr        #
+#    Updated: 2022/08/31 14:02:40 by gsaiago          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
 SRCS = so_long.c\
+	   utils_so_long_map.c\
+	   utils_so_long_keyhooks.c\
 	   get_next_line.c\
 	   get_next_line_utils.c\
-	   utils_so_long_map.c\
 
 OBJ = $(SRCS:.c=.o)
 

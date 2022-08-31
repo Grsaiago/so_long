@@ -6,15 +6,11 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 13:12:03 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/30 15:24:55 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/08/31 14:38:27 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-int		initialize_images(t_data *s_data);
-void	img_put(t_data *s_data, char c);
-int		paint_bg(t_data *s_data);
 
 int	main(int argc, char *argv[])
 {
@@ -32,6 +28,7 @@ int	main(int argc, char *argv[])
 	s_data.map_array = create_map_array(&s_data);
 	s_data.win_ptr = mlx_new_window(s_data.mlx_ptr, s_data.size_x * s_data.i_width, s_data.size_y * s_data.i_height, "so_long");
 	paint_bg(&s_data);
+//	mlx_key_hook(s_data.win_ptr, &keyhook_main_call, &s_data);
 	mlx_loop(s_data.mlx_ptr);
 }
 
@@ -59,17 +56,18 @@ int	initialize_images(t_data *s_data)
 
 int	paint_bg(t_data *s_data)
 {
-	int 	i;
-	int		j;
+	int	i;
+	int	j;
 
 	i = 0;
-	while(s_data->map_array[i])
+	s_data->pos_y = 0;
+	while (s_data->map_array[i])
 	{
-		s_data->pos_x = 1;
+		s_data->pos_x = 0;
 		j = 0;
-		while(j < s_data->size_x)
+		while (j < s_data->size_x)
 		{
-			img_put(s_data, s_data->map_array[i][j]);
+			img_put(s_data, s_data->map_array[i][j], i, j);
 			s_data->pos_x += s_data->i_width;
 			j++;
 		}
@@ -79,17 +77,48 @@ int	paint_bg(t_data *s_data)
 	return (0);
 }
 
-
-void	img_put(t_data *s_data, char c)
+void	img_put(t_data *s_data, char c, int i, int j)
 {
 	if (c == '0')
-		mlx_put_image_to_window(s_data->mlx_ptr, s_data->win_ptr, s_data->i_tile, s_data->pos_x, s_data->pos_y);
+		mlx_put_image_to_window(s_data->mlx_ptr, s_data->win_ptr,
+			s_data->i_tile, s_data->pos_x, s_data->pos_y);
 	else if (c == '1')
-		mlx_put_image_to_window(s_data->mlx_ptr, s_data->win_ptr, s_data->i_wall, s_data->pos_x, s_data->pos_y);
+		mlx_put_image_to_window(s_data->mlx_ptr, s_data->win_ptr,
+			s_data->i_wall, s_data->pos_x, s_data->pos_y);
 	else if (c == 'C')
-		mlx_put_image_to_window(s_data->mlx_ptr, s_data->win_ptr, s_data->i_coin, s_data->pos_x, s_data->pos_y);
+	{
+		mlx_put_image_to_window(s_data->mlx_ptr, s_data->win_ptr,
+			s_data->i_coin, s_data->pos_x, s_data->pos_y);
+		s_data->c_count++;
+	}
 	else if (c == 'E')
-		mlx_put_image_to_window(s_data->mlx_ptr, s_data->win_ptr, s_data->i_door_closed, s_data->pos_x, s_data->pos_y);
+		mlx_put_image_to_window(s_data->mlx_ptr, s_data->win_ptr,
+			s_data->i_door_closed, s_data->pos_x, s_data->pos_y);
 	else if (c == 'P')
-		mlx_put_image_to_window(s_data->mlx_ptr, s_data->win_ptr, s_data->i_player, s_data->pos_x, s_data->pos_y);
+	{
+		mlx_put_image_to_window(s_data->mlx_ptr, s_data->win_ptr,
+			s_data->i_player, s_data->pos_x, s_data->pos_y);
+		s_data->player_x = i;
+		s_data->player_y = j;
+	}
+}
+
+int	keyhook_main_call(int keycode, t_data *s_data)
+{
+	static int count;
+	
+	count++;
+	s_data->c_count = 1;
+	if (keycode == 13)
+		keyhook_w(s_data);
+	else if (keycode == 0)
+		keyhook_a
+	else if (keycode == 1)
+		keyhook_s
+	else if (keycode == 2)
+		keyhook_d
+	else if (keycode == 53)
+		keyhook_esc
+	printf("o keycode do que foi pressionado é > |%d|\nO contador está em > |%d|", keycode, count);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 17:16:03 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/30 15:22:21 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/08/31 14:38:06 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ typedef struct s_data
 	int		size_y;
 	int		pos_x;
 	int		pos_y;
+	int		player_x;
+	int		player_y;
 	int		c_count;
 	char	*map_name;
 	char	**map_array;
@@ -58,13 +60,17 @@ char	*ft_strchr(const char *s, int c);
 
 // ---SO_LONG FUNCTIONS--- //
 
+int     initialize_images(t_data *s_data);
 int		map_validate_name(t_data *s_data, char *map);
 int		map_validate_dimentions(t_data *s_data);
 int		map_validate_floor_ceiling(t_data *s_data, char *line, int flag, int fd);
 int		map_validate_borders(t_data *s_data, char *line, int flag, int fd);
 int		map_validate_outline(t_data *s_data);
-int		count_components(char c, t_data *s_data);
+int		count_components(char c);
 int		map_validate_components(t_data s_data);
 int		validate_map(t_data *s_data, char *map);
 char 	**create_map_array(t_data *s_data);
+void    img_put(t_data *s_data, char c, int i, int j);
+int 	paint_bg(t_data *s_data);
+int     keyhook_main_call(int keycode, t_data *s_data);
 #endif
