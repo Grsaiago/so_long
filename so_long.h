@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 17:16:03 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/31 14:38:06 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/02 14:41:03 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_data
 	void	*i_player;
 	int		i_height;
 	int		i_width;
+	int		k_count;
 }	t_data;
 
 // ---GNL FUNCTIONS--- //
@@ -59,18 +60,29 @@ char	*ft_returnptr(char *buffer);
 char	*ft_strchr(const char *s, int c);
 
 // ---SO_LONG FUNCTIONS--- //
-
 int     initialize_images(t_data *s_data);
+// map validations functions //
 int		map_validate_name(t_data *s_data, char *map);
 int		map_validate_dimentions(t_data *s_data);
 int		map_validate_floor_ceiling(t_data *s_data, char *line, int flag, int fd);
 int		map_validate_borders(t_data *s_data, char *line, int flag, int fd);
 int		map_validate_outline(t_data *s_data);
-int		count_components(char c);
+int		count_components(t_data *s_data, char c);
 int		map_validate_components(t_data s_data);
 int		validate_map(t_data *s_data, char *map);
 char 	**create_map_array(t_data *s_data);
+// screen refresh functions //
 void    img_put(t_data *s_data, char c, int i, int j);
 int 	paint_bg(t_data *s_data);
-int     keyhook_main_call(int keycode, t_data *s_data);
+// keyhook functions //
+int		keyhook_main_call(int keycode, t_data *s_data);
+int		keyhook_w(t_data *s_data);
+int		keyhook_a(t_data *s_data);
+int		keyhook_s(t_data *s_data);
+int		keyhook_d(t_data *s_data);
+int		keyhook_esc(t_data *s_data);
+// error/free functions //
+void	free_struct(t_data *s_data);
+void	destroy_mlx(t_data *s_data);
+void	ft_writenbr(int nbr);
 #endif

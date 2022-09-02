@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 16:42:35 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/31 13:39:06 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/02 11:51:27 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,14 +112,17 @@ int	map_validate_outline(t_data *s_data)
 	return (close(fd));
 }
 
-int	count_components(char c)
+int	count_components(t_data *s_data, char c)
 {
 	static int	count;
 
 	if (c == 'P')
 		count++;
 	else if (c == 'C')
+	{
 		count = count | (1 << 1);
+		s_data->c_count++;
+	}
 	else if (c == 'E')
 		count = count | (1 << 2);
 	return (count);
@@ -141,7 +144,7 @@ int	validate_components(t_data *s_data)
 	{
 		i = -1;
 		while (++i < (s_data->size_x))
-			flag = count_components(line[i]);
+			flag = count_components(s_data, line[i]);
 		free(line);
 		line = get_next_line(fd);
 	}

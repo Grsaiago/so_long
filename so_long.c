@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 13:12:03 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/31 14:38:27 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/02 14:25:24 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(int argc, char *argv[])
 	t_data	s_data;
 
 	if (argc != 2)
-		return (write (1, "quantidade incorreta de args.", 29));
+		return (write(1, "quantidade incorreta de args.", 29));
 	if (validate_map(&s_data, argv[1]) < 0)
 		return (-1);
 	s_data.mlx_ptr = mlx_init();
@@ -28,7 +28,7 @@ int	main(int argc, char *argv[])
 	s_data.map_array = create_map_array(&s_data);
 	s_data.win_ptr = mlx_new_window(s_data.mlx_ptr, s_data.size_x * s_data.i_width, s_data.size_y * s_data.i_height, "so_long");
 	paint_bg(&s_data);
-//	mlx_key_hook(s_data.win_ptr, &keyhook_main_call, &s_data);
+	mlx_key_hook(s_data.win_ptr, &keyhook_main_call, &s_data);
 	mlx_loop(s_data.mlx_ptr);
 }
 
@@ -86,11 +86,8 @@ void	img_put(t_data *s_data, char c, int i, int j)
 		mlx_put_image_to_window(s_data->mlx_ptr, s_data->win_ptr,
 			s_data->i_wall, s_data->pos_x, s_data->pos_y);
 	else if (c == 'C')
-	{
 		mlx_put_image_to_window(s_data->mlx_ptr, s_data->win_ptr,
 			s_data->i_coin, s_data->pos_x, s_data->pos_y);
-		s_data->c_count++;
-	}
 	else if (c == 'E')
 		mlx_put_image_to_window(s_data->mlx_ptr, s_data->win_ptr,
 			s_data->i_door_closed, s_data->pos_x, s_data->pos_y);
@@ -103,22 +100,28 @@ void	img_put(t_data *s_data, char c, int i, int j)
 	}
 }
 
-int	keyhook_main_call(int keycode, t_data *s_data)
+void	free_struct(t_data *s_data)
 {
-	static int count;
-	
-	count++;
-	s_data->c_count = 1;
-	if (keycode == 13)
-		keyhook_w(s_data);
-	else if (keycode == 0)
-		keyhook_a
-	else if (keycode == 1)
-		keyhook_s
-	else if (keycode == 2)
-		keyhook_d
-	else if (keycode == 53)
-		keyhook_esc
-	printf("o keycode do que foi pressionado é > |%d|\nO contador está em > |%d|", keycode, count);
-	return (0);
+	int	i;
+
+	i = 0;
+	mlx_destroy_image(s_data->mlx_ptr, s_data->i_tile);
+	mlx_destroy_image(s_data->mlx_ptr, s_data->i_wall);
+	mlx_destroy_image(s_data->mlx_ptr, s_data->i_coin);
+	mlx_destroy_image(s_data->mlx_ptr, s_data->i_door_open);
+	mlx_destroy_image(s_data->mlx_ptr, s_data->i_door_closed);
+	mlx_destroy_image(s_data->mlx_ptr, s_data->i_player);
+	while (s_data->map_array[i])
+	{
+		free(s_data->map_array[i]);
+		i++;
+	}
+	free(s_data->map_array);
+	return ;
+}
+
+void	destroy_mlx(t_data *s_data)
+{
+	mlx_clear_window(s_data->mlx_ptr, s_data->win_ptr);
+	mlx_destroy_window(s_data->mlx_ptr, s_data->win_ptr);
 }
