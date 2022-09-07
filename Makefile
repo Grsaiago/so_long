@@ -6,7 +6,7 @@
 #    By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/30 14:24:57 by gsaiago           #+#    #+#              #
-#    Updated: 2022/09/02 14:38:06 by gsaiago          ###   ########.fr        #
+#    Updated: 2022/09/07 19:20:44 by gsaiago          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,9 +21,10 @@ SRCS = so_long.c\
 
 OBJ = $(SRCS:.c=.o)
 
+MAP = ./map.ber
 RM = rm -f
 ARC = ar -rcs
-FLAGS = -Wall -Wextra -Werror -g
+FLAGS = -g
 CC = cc
 
 
@@ -43,12 +44,12 @@ $(NAME): $(OBJ)
 re: clean all
 
 t: re
-	./$(NAME) ./map.ber
+	./$(NAME) $(MAP)
 
 lldb: re
-	lldb $(NAME) ./map.ber
+	lldb $(NAME) $(MAP)
 val: re
-	valgrind --leak-check=full --suppressions=suppression_valgrind ./$(NAME)
+	valgrind --leak-check=full --suppressions=suppression_valgrind ./$(NAME) $(MAP)
 
 .PHONY:
 	all clean re fclean val lldb t

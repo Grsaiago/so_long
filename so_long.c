@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 13:12:03 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/07 16:27:50 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/07 20:21:46 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,21 @@ int	main(int argc, char *argv[])
 
 	s_data = (t_data){0};
 	if (argc != 2)
-		return (write(1, "quantidade incorreta de args.", 29));
+		exit_func(&s_data, "Invalid arguments 😭");
 	if (validate_map(&s_data, argv[1]) < 0)
-		return (-1);
+		exit_func(&s_data, "Invalid map file");
 	s_data.mlx_ptr = mlx_init();
 	if (!s_data.mlx_ptr)
-		return (-1);
+		exit_func(&s_data, "mlx failed to initialized 😅");
 	if (initialize_images(&s_data) < 0)
-		return (-1);
+		exit_func(&s_data, "Some image failed to initialize");
 	s_data.map_array = create_map_array(&s_data);
-	s_data.win_ptr = mlx_new_window(s_data.mlx_ptr, s_data.size_x * s_data.i_width, s_data.size_y * s_data.i_height, "so_long");
+	s_data.win_ptr = mlx_new_window(s_data.mlx_ptr,
+			s_data.size_x * s_data.i_width, s_data.size_y * s_data.i_height, "so_long");
 	paint_bg(&s_data);
 	mlx_key_hook(s_data.win_ptr, &keyhook_main_call, &s_data);
+	mlx_hook(s_data.win_ptr, 17, 0, &close_window, &s_data);
+
 	mlx_loop(s_data.mlx_ptr);
 }
 
@@ -104,17 +107,11 @@ void	img_put(t_data *s_data, char c, int i, int j)
 	}
 }
 
-void	free_struct(t_data *s_data)
+void	free_map_array(t_data *s_data)
 {
 	int	i;
 
 	i = 0;
-	mlx_destroy_image(s_data->mlx_ptr, s_data->i_tile);
-	mlx_destroy_image(s_data->mlx_ptr, s_data->i_wall);
-	mlx_destroy_image(s_data->mlx_ptr, s_data->i_coin);
-	mlx_destroy_image(s_data->mlx_ptr, s_data->i_door_open);
-	mlx_destroy_image(s_data->mlx_ptr, s_data->i_door_closed);
-	mlx_destroy_image(s_data->mlx_ptr, s_data->i_player);
 	while (s_data->map_array[i])
 	{
 		free(s_data->map_array[i]);

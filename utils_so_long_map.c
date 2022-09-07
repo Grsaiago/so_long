@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 16:42:35 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/07 15:59:38 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/07 17:59:52 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,7 @@ int	validate_map(t_data *s_data, char *map)
 	if (map_validate_outline(s_data) < 0)
 		return (-1);
 	if (validate_components(s_data) != 7)
-		 return (-1);
+		return (-1);
 	return (0);
 }
 

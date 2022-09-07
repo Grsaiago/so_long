@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 17:16:03 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/02 14:41:03 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/07 20:22:22 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <unistd.h>
 #include <mlx.h>
 #include <stdlib.h>
+#include <errno.h>
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
@@ -81,8 +82,9 @@ int		keyhook_a(t_data *s_data);
 int		keyhook_s(t_data *s_data);
 int		keyhook_d(t_data *s_data);
 int		keyhook_esc(t_data *s_data);
+int		close_window(t_data *s_data);
 // error/free functions //
-void	free_struct(t_data *s_data);
-void	destroy_mlx(t_data *s_data);
+void	free_map_array(t_data *s_data);
 void	ft_writenbr(int nbr);
+void	exit_func(t_data *s_data, const char *str);
 #endif

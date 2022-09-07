@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 14:53:22 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/19 17:56:29 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/07 18:06:40 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,3 +107,10 @@ char	*ft_strjoin_gnl(char *s1, char *s2)
 	free(s2);
 	return (str);
 }
+
+/*
+void	error_func(int error_code, const char *s)
+{
+	
+}
+*/
