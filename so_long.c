@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 13:12:03 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/02 14:25:24 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/07 16:27:50 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	main(int argc, char *argv[])
 {
 	t_data	s_data;
 
+	s_data = (t_data){0};
 	if (argc != 2)
 		return (write(1, "quantidade incorreta de args.", 29));
 	if (validate_map(&s_data, argv[1]) < 0)
@@ -88,6 +89,9 @@ void	img_put(t_data *s_data, char c, int i, int j)
 	else if (c == 'C')
 		mlx_put_image_to_window(s_data->mlx_ptr, s_data->win_ptr,
 			s_data->i_coin, s_data->pos_x, s_data->pos_y);
+	else if (c == 'E' && s_data->c_count == 0)
+		mlx_put_image_to_window(s_data->mlx_ptr, s_data->win_ptr,
+			s_data->i_door_open, s_data->pos_x, s_data->pos_y);
 	else if (c == 'E')
 		mlx_put_image_to_window(s_data->mlx_ptr, s_data->win_ptr,
 			s_data->i_door_closed, s_data->pos_x, s_data->pos_y);
