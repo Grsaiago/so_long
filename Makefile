@@ -6,19 +6,25 @@
 #    By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/30 14:24:57 by gsaiago           #+#    #+#              #
-#    Updated: 2022/09/09 15:36:24 by gsaiago          ###   ########.fr        #
+#    Updated: 2022/09/09 19:58:39 by gsaiago          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
+BONUS_NAME = so_long_bonus
 
-SRCS = so_long.c\
-	   utils_so_long_exit.c\
-	   utils_so_long_map.c\
-	   utils_so_long_map1.c\
-	   utils_so_long_keyhooks.c\
-	   get_next_line.c\
-	   get_next_line_utils.c\
+COMMON =	./common/utils_so_long_exit.c\
+	   		./common/utils_so_long_map.c\
+	   		./common/utils_so_long_map1.c\
+	   		./common/get_next_line.c\
+	   		./common/get_next_line_utils.c\
+
+MANDATORY =	./mandatory/so_long.c\
+	   		./mandatory/utils_so_long_keyhooks.c\
+
+BONUS_F	=	./bonus/so_long_bonus.c\
+			./bonus/utils_so_long_bonus.c\
+			./bonus/utils_so_long_keyhooks_bonus.c\
 
 MAP = ./map.ber
 RM = rm -f
@@ -32,9 +38,10 @@ clean:
 
 fclean: clean 
 	@rm -f $(NAME)
+	@rm -f $(BONUS_NAME)
 
-$(NAME): $(DO_MLX) $(SRCS)
-		@$(CC) -o $(NAME) $(SRCS) -Lmlx -lmlx -framework OpenGL -framework AppKit 
+$(NAME): $(DO_MLX) $(MANDATORY) $(COMMON)
+		@$(CC) -o $(NAME) $(COMMON) $(MANDATORY) -Lmlx -lmlx -framework OpenGL -framework AppKit 
 		@echo "So_long done ✅"
 
 $(DO_MLX):
@@ -50,5 +57,9 @@ lldb: re
 val: re
 	@valgrind --leak-check=full --suppressions=suppression_valgrind ./$(NAME) $(MAP)
 
+bonus: $(DO_MLX) $(COMMON) $(BONUS_F)
+		@$(CC) -o $(BONUS_NAME) $(COMMON) $(BONUS_F) -Lmlx -lmlx -framework OpenGL -framework AppKit
+		@echo "So_long_bonus done ✅"
+
 .PHONY:
-	all clean re fclean val lldb t
+	all clean re fclean bonus val lldb t

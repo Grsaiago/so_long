@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_so_long.c                                    :+:      :+:    :+:   */
+/*   utils_so_long_exit.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 14:34:20 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/09 15:31:21 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/09 19:55:56 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../mandatory/so_long.h"
 
 int	keyhook_esc(t_data *s_data)
 {
@@ -28,7 +28,8 @@ void	exit_func(t_data *s_data, const char *str)
 {
 	errno = ECANCELED;
 	perror(str);
-	mlx_clear_window(s_data->mlx_ptr, s_data->win_ptr);
+	if (s_data->mlx_ptr)
+		mlx_clear_window(s_data->mlx_ptr, s_data->win_ptr);
 	if (s_data->i_tile)
 		mlx_destroy_image(s_data->mlx_ptr, s_data->i_tile);
 	if (s_data->i_wall)

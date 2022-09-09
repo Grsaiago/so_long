@@ -6,14 +6,14 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 16:42:35 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/09 15:26:39 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/09 19:43:54 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //Dimensions && Content
 //count -> validate -> store
 
-#include "so_long.h"
+#include "../mandatory/so_long.h"
 
 int	map_validate_name(t_data *s_data, char *map)
 {

@@ -6,11 +6,11 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:26:04 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/09 15:26:18 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/09 19:43:15 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../mandatory/so_long.h"
 
 int	count_components(t_data *s_data, char c)
 {

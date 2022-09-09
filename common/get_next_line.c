@@ -6,16 +6,15 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 16:39:03 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/19 17:55:12 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/09 19:50:21 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../mandatory/so_long.h"
 
 #ifndef BUFFER_SIZE
 # define BUFFER_SIZE 10
 #endif
-
 char	*get_next_line(int fd)
 {
 	int			valid;

@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 17:16:03 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/09 14:39:24 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/09 19:49:03 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <string.h>
 # include <stdio.h>
 # include <unistd.h>
-# include "./mlx/mlx.h"
+# include "../mlx/mlx.h"
 # include <stdlib.h>
 # include <errno.h>
 

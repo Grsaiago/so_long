@@ -6,11 +6,11 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 14:53:22 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/07 18:06:40 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/09 19:42:34 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../mandatory/so_long.h"
 
 char	*ft_strchr(const char *s, int c)
 {
