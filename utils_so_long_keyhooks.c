@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 13:49:35 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/07 20:35:25 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/09 13:09:26 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 int	keyhook_main_call(int keycode, t_data *s_data)
 {
-//	if (keycode == 13 || keycode == 0 || keycode == 1
-//		|| keycode == 2 || keycode == 53)
-//		s_data->k_count++;
 	if (keycode == 13)
 		keyhook_w(s_data);
 	else if (keycode == 0)
@@ -140,9 +137,8 @@ int	keyhook_esc(t_data *s_data)
 	return (0);
 }
 
-int close_window(t_data *s_data)
+int	close_window(t_data *s_data)
 {
 	exit_func(s_data, "You closed the window 😎");
 	return (0);
 }
-

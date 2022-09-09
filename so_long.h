@@ -6,20 +6,20 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 17:16:03 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/07 20:22:22 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/09 14:39:24 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
-#include <string.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <mlx.h>
-#include <stdlib.h>
-#include <errno.h>
-
 #ifndef SO_LONG_H
 # define SO_LONG_H
+
+# include <fcntl.h>
+# include <string.h>
+# include <stdio.h>
+# include <unistd.h>
+# include "./mlx/mlx.h"
+# include <stdlib.h>
+# include <errno.h>
 
 // ---SO_LONG STRUCTS--- //
 
@@ -36,7 +36,6 @@ typedef struct s_data
 	int		c_count;
 	char	*map_name;
 	char	**map_array;
-// parte de imagens do struct:
 	void	*i_tile;
 	void	*i_wall;
 	void	*i_coin;
@@ -61,20 +60,21 @@ char	*ft_returnptr(char *buffer);
 char	*ft_strchr(const char *s, int c);
 
 // ---SO_LONG FUNCTIONS--- //
-int     initialize_images(t_data *s_data);
+int		initialize_images(t_data *s_data);
 // map validations functions //
 int		map_validate_name(t_data *s_data, char *map);
 int		map_validate_dimentions(t_data *s_data);
-int		map_validate_floor_ceiling(t_data *s_data, char *line, int flag, int fd);
+int		map_validate_floor_ceiling(t_data *s_data, char *line,
+			int flag, int fd);
 int		map_validate_borders(t_data *s_data, char *line, int flag, int fd);
 int		map_validate_outline(t_data *s_data);
 int		count_components(t_data *s_data, char c);
 int		map_validate_components(t_data s_data);
 int		validate_map(t_data *s_data, char *map);
-char 	**create_map_array(t_data *s_data);
+char	**create_map_array(t_data *s_data);
 // screen refresh functions //
-void    img_put(t_data *s_data, char c, int i, int j);
-int 	paint_bg(t_data *s_data);
+void	img_put(t_data *s_data, char c, int i, int j);
+int		paint_bg(t_data *s_data);
 // keyhook functions //
 int		keyhook_main_call(int keycode, t_data *s_data);
 int		keyhook_w(t_data *s_data);

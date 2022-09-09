@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 16:42:35 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/07 17:59:52 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/09 13:12:14 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	map_validate_name(t_data *s_data, char *map)
 	int	len;
 
 	len = ft_strlen(map);
-	if (map[len - 1] != 'r' || map[len - 2] != 'e' 
+	if (map[len - 1] != 'r' || map[len - 2] != 'e'
 		|| map[len - 3] != 'b' || map[len - 4] != '.')
 		return (-1);
 	s_data->map_name = map;
@@ -166,21 +166,20 @@ int	validate_map(t_data *s_data, char *map)
 	return (0);
 }
 
-char **create_map_array(t_data *s_data)
+char	**create_map_array(t_data *s_data)
 {
 	int		i;
 	int		fd;
 	char	**array;
-	
-	
+
 	array = ft_calloc(s_data->size_y + 1, sizeof(char *));
 	if (!array)
-			return(NULL);
+		return (NULL);
 	fd = open(s_data->map_name, O_RDONLY);
 	if (fd < 2)
-			return(NULL);
+		return (NULL);
 	i = 0;
-	while(i < s_data->size_y)
+	while (i < s_data->size_y)
 	{
 		array[i] = get_next_line(fd);
 		i++;
@@ -188,18 +187,3 @@ char **create_map_array(t_data *s_data)
 	close(fd);
 	return (array);
 }
-
-/*
-int	main(void)
-{
-	char	*map = "./map.ber";
-	int		valid;
-	t_data	s_data;
-
-	valid = validate_map(&s_data, map);
-	printf("A quantidade de colunas do arquivo .ber no path |%s| é > |%d|\n", map, s_data.size_x);
-	printf("A quantidade de linhas do arquivo .ber no path |%s| é > |%d|\n", map, s_data.size_y);
-	printf("O retorno da função é > |%d|\n", valid);
-	printf("O retorno de map_validate é > |%d|\n", valid);
-}
-*/
