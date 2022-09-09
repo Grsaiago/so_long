@@ -6,22 +6,22 @@
 #    By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/30 14:24:57 by gsaiago           #+#    #+#              #
-#    Updated: 2022/09/09 15:02:56 by gsaiago          ###   ########.fr        #
+#    Updated: 2022/09/09 15:36:24 by gsaiago          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
 SRCS = so_long.c\
-	   utils_so_long.c\
+	   utils_so_long_exit.c\
 	   utils_so_long_map.c\
+	   utils_so_long_map1.c\
 	   utils_so_long_keyhooks.c\
 	   get_next_line.c\
 	   get_next_line_utils.c\
 
 MAP = ./map.ber
 RM = rm -f
-FLAGS = -g
 CC = cc -Wall -Wextra -Werror
 DO_MLX = ./mlx/libmlx.a
 
@@ -35,7 +35,7 @@ fclean: clean
 
 $(NAME): $(DO_MLX) $(SRCS)
 		@$(CC) -o $(NAME) $(SRCS) -Lmlx -lmlx -framework OpenGL -framework AppKit 
-		@echo "\033[0;32mSo_long done ✅"
+		@echo "So_long done ✅"
 
 $(DO_MLX):
 	@make -C ./mlx
@@ -43,7 +43,7 @@ $(DO_MLX):
 re: clean all
 
 t: re
-	./$(NAME) $(MAP)
+	@./$(NAME) $(MAP)
 
 lldb: re
 	@lldb $(NAME) $(MAP)

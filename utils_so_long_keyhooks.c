@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 13:49:35 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/09 13:09:26 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/09 15:34:42 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,17 +128,5 @@ int	keyhook_d(t_data *s_data)
 	ft_writenbr(s_data->k_count);
 	paint_bg(s_data);
 	write(1, "\n", 1);
-	return (0);
-}
-
-int	keyhook_esc(t_data *s_data)
-{
-	exit_func(s_data, "You pressed ESC");
-	return (0);
-}
-
-int	close_window(t_data *s_data)
-{
-	exit_func(s_data, "You closed the window 😎");
 	return (0);
 }

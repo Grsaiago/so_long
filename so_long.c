@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 13:12:03 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/07 20:55:15 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/09 15:34:31 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,24 +105,4 @@ void	img_put(t_data *s_data, char c, int i, int j)
 		s_data->player_x = i;
 		s_data->player_y = j;
 	}
-}
-
-void	free_map_array(t_data *s_data)
-{
-	int	i;
-
-	i = 0;
-	while (s_data->map_array[i])
-	{
-		free(s_data->map_array[i]);
-		i++;
-	}
-	free(s_data->map_array);
-	return ;
-}
-
-void	destroy_mlx(t_data *s_data)
-{
-	mlx_clear_window(s_data->mlx_ptr, s_data->win_ptr);
-	mlx_destroy_window(s_data->mlx_ptr, s_data->win_ptr);
 }
