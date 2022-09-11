@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 14:34:20 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/09 19:55:56 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/11 18:24:09 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void	exit_func(t_data *s_data, const char *str)
 		mlx_destroy_image(s_data->mlx_ptr, s_data->i_door_closed);
 	if (s_data->i_player)
 		mlx_destroy_image(s_data->mlx_ptr, s_data->i_player);
+	if (s_data->i_enemy)
+		mlx_destroy_image(s_data->mlx_ptr, s_data->i_enemy);
 	if (s_data->win_ptr)
 		mlx_destroy_window(s_data->mlx_ptr, s_data->win_ptr);
 	if (s_data->mlx_ptr)
