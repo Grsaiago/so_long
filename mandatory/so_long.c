@@ -6,12 +6,13 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 13:12:03 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/09 15:34:31 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/12 17:24:02 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+/*
 int	main(int argc, char *argv[])
 {
 	t_data	s_data;
@@ -35,7 +36,7 @@ int	main(int argc, char *argv[])
 	mlx_hook(s_data.win_ptr, 17, 0, &close_window, &s_data);
 	mlx_loop(s_data.mlx_ptr);
 }
-
+*/
 int	initialize_images(t_data *s_data)
 {
 	s_data->i_height = 91;
