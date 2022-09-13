@@ -6,7 +6,7 @@
 #    By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/30 14:24:57 by gsaiago           #+#    #+#              #
-#    Updated: 2022/09/12 17:23:47 by gsaiago          ###   ########.fr        #
+#    Updated: 2022/09/13 19:23:24 by gsaiago          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,10 +19,9 @@ COMMON =	./common/utils_so_long_exit.c\
 	   		./common/get_next_line.c\
 	   		./common/get_next_line_utils.c\
 
-MANDATORY =	teste.c\
+MANDATORY =	./mandatory/so_long.c\
 	   		./mandatory/utils_so_long_keyhooks.c\
-			./mandatory/so_long.c\
-
+			
 BONUS_F	=	./bonus/so_long_bonus.c\
 			./bonus/utils_so_long_bonus.c\
 			./bonus/utils_so_long_keyhooks_bonus.c\
