@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 14:34:20 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/11 18:24:09 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/13 19:09:16 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,21 +49,21 @@ void	exit_func(t_data *s_data, const char *str)
 	if (s_data->mlx_ptr)
 		free(s_data->mlx_ptr);
 	if (s_data->map_array)
-		free_map_array(s_data);
+		free_map_array(s_data->map_array);
 	exit(EXIT_FAILURE);
 }
 
-void	free_map_array(t_data *s_data)
+void	free_map_array(char **array)
 {
 	int	i;
 
 	i = 0;
-	while (s_data->map_array[i])
+	while (array[i])
 	{
-		free(s_data->map_array[i]);
+		free(array[i]);
 		i++;
 	}
-	free(s_data->map_array);
+	free(array);
 	return ;
 }
 

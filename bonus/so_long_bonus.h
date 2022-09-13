@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 17:16:03 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/13 19:02:08 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/13 19:07:46 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int		keyhook_d(t_data *s_data);
 int		keyhook_esc(t_data *s_data);
 int		close_window(t_data *s_data);
 // error/free functions //
-void	free_map_array(t_data *s_data);
+void	free_map_array(char **array);
 void	ft_writenbr(int nbr);
 void	exit_func(t_data *s_data, const char *str);
 #endif

@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:26:04 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/13 18:52:38 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/13 19:07:27 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void	validate_map(t_data *s_data, char *map)
 	if (s_data->c_reach != s_data->c_count 
 		|| s_data->e_reach != e_reach)
 		exit_func(s_data, "There is no valid path on the map");
+	free_map_array(s_data->map_sol);
 	return ;
 }
 
