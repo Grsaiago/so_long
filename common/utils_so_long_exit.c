@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 14:34:20 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/13 19:09:16 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/13 19:16:49 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	exit_func(t_data *s_data, const char *str)
 {
 	errno = ECANCELED;
 	perror(str);
+	mlx_clear_window (s_data->mlx_ptr, s_data->win_ptr);
 	if (s_data->mlx_ptr)
 		mlx_clear_window(s_data->mlx_ptr, s_data->win_ptr);
 	if (s_data->i_tile)
