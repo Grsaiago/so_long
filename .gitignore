@@ -35,6 +35,7 @@
 *.i*86
 *.x86_64
 *.hex
+so_long
 
 # Debug files
 *.dSYM/
@@ -52,4 +53,4 @@ Mkfile.old
 dkms.conf
 
 # Mac Files
-.DS_Store
+*DS_Store

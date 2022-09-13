@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:26:04 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/13 18:45:25 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/13 18:52:38 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	dfs(t_data *s_data, int x, int y, char **map_sol)
 	return ;
 }
 
-int	validate_map(t_data *s_data, char *map)
+void	validate_map(t_data *s_data, char *map)
 {
 	if (map_validate_name(s_data, map) < 0)
 		exit_func(s_data, "Error!\nInvalid map name");
@@ -88,7 +88,7 @@ int	validate_map(t_data *s_data, char *map)
 	if (s_data->c_reach != s_data->c_count 
 		|| s_data->e_reach != e_reach)
 		exit_func(s_data, "There is no valid path on the map");
-	return (0);
+	return ;
 }
 
 char	**create_map_array(t_data *s_data)

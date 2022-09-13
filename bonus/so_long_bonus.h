@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 17:16:03 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/13 18:44:34 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/13 19:02:08 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	*ft_calloc(size_t count, size_t size);
 char	*ft_itoa(long int n);
 
 // ---SO_LONG FUNCTIONS--- //
-int		initialize_images(t_data *s_data);
+void	initialize_images(t_data *s_data);
 // map validations functions //
 int		map_validate_name(t_data *s_data, char *map);
 int		map_validate_dimentions(t_data *s_data);
@@ -81,7 +81,7 @@ int		map_validate_borders(t_data *s_data, char *line, int flag, int fd);
 int		map_validate_outline(t_data *s_data);
 int		count_components(t_data *s_data, char c);
 int		map_validate_components(t_data s_data);
-int		validate_map(t_data *s_data, char *map);
+void	validate_map(t_data *s_data, char *map);
 char	**create_map_array(t_data *s_data);
 // screen refresh functions //
 void	img_put(t_data *s_data, char c, int i, int j);

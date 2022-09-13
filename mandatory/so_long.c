@@ -6,13 +6,12 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 13:12:03 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/12 17:24:02 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/13 19:03:51 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-/*
 int	main(int argc, char *argv[])
 {
 	t_data	s_data;
@@ -20,14 +19,11 @@ int	main(int argc, char *argv[])
 	s_data = (t_data){0};
 	if (argc != 2)
 		exit_func(&s_data, "Error!\nInvalid arguments 😭");
-	if (validate_map(&s_data, argv[1]) < 0)
-		exit_func(&s_data, "Invalid map file");
+	validate_map(&s_data, argv[1]);
 	s_data.mlx_ptr = mlx_init();
 	if (!s_data.mlx_ptr)
 		exit_func(&s_data, "Error!\nmlx failed to initialized 😅");
-	if (initialize_images(&s_data) < 0)
-		exit_func(&s_data, "Error!\nSome image failed to initialize");
-	s_data.map_array = create_map_array(&s_data);
+	initialize_images(&s_data);
 	s_data.win_ptr = mlx_new_window(s_data.mlx_ptr,
 			s_data.size_x * s_data.i_width,
 			s_data.size_y * s_data.i_height, "so_long");
@@ -36,8 +32,8 @@ int	main(int argc, char *argv[])
 	mlx_hook(s_data.win_ptr, 17, 0, &close_window, &s_data);
 	mlx_loop(s_data.mlx_ptr);
 }
-*/
-int	initialize_images(t_data *s_data)
+
+void	initialize_images(t_data *s_data)
 {
 	s_data->i_height = 91;
 	s_data->i_width = 91;
@@ -55,8 +51,8 @@ int	initialize_images(t_data *s_data)
 			"./assets/player.xpm", &s_data->i_height, &s_data->i_width);
 	if (!s_data->i_tile || !s_data->i_wall || !s_data->i_coin
 		|| !s_data->i_door_open || !s_data->i_door_closed || !s_data->i_player)
-		return (-1);
-	return (0);
+		exit_func(&s_data, "Error!\nSome image failed to initialize");
+	return ;
 }
 
 int	paint_bg(t_data *s_data)

@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 17:16:03 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/13 18:45:55 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/13 18:52:59 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int		map_validate_borders(t_data *s_data, char *line, int flag, int fd);
 int		map_validate_outline(t_data *s_data);
 int		count_components(t_data *s_data, char c);
 int		map_validate_components(t_data s_data);
-int		validate_map(t_data *s_data, char *map);
+void	validate_map(t_data *s_data, char *map);
 char	**create_map_array(t_data *s_data);
 void	dfs(t_data *s_data, int x, int y, char **map_sol);
 // screen refresh functions //
