@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 17:16:03 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/09 19:50:55 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/13 18:44:34 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,13 @@ typedef struct s_data
 	int		player_x;
 	int		player_y;
 	int		c_count;
+	int		e_count;
+	int		p_count;
+	int		c_reach;
+	int		e_reach;
 	char	*map_name;
 	char	**map_array;
+	char	**map_sol;
 	void	*i_tile;
 	void	*i_wall;
 	void	*i_coin;

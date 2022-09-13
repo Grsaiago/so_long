@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 17:16:03 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/13 14:33:56 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/13 18:45:55 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct s_data
 	int		e_reach;
 	char	*map_name;
 	char	**map_array;
-	char	**map_find;
+	char	**map_sol;
 	void	*i_tile;
 	void	*i_wall;
 	void	*i_coin;
@@ -67,7 +67,7 @@ char	*ft_strchr(const char *s, int c);
 
 // ---SO_LONG FUNCTIONS--- //
 int		initialize_images(t_data *s_data);
-// map validations functions //
+// map validation functions //
 int		map_validate_name(t_data *s_data, char *map);
 int		map_validate_dimentions(t_data *s_data);
 int		map_validate_floor_ceiling(t_data *s_data, char *line,
@@ -78,6 +78,7 @@ int		count_components(t_data *s_data, char c);
 int		map_validate_components(t_data s_data);
 int		validate_map(t_data *s_data, char *map);
 char	**create_map_array(t_data *s_data);
+void	dfs(t_data *s_data, int x, int y, char **map_sol);
 // screen refresh functions //
 void	img_put(t_data *s_data, char c, int i, int j);
 int		paint_bg(t_data *s_data);
@@ -93,4 +94,5 @@ int		close_window(t_data *s_data);
 void	free_map_array(t_data *s_data);
 void	ft_writenbr(int nbr);
 void	exit_func(t_data *s_data, const char *str);
+
 #endif
