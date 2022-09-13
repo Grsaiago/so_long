@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 17:16:03 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/12 16:35:42 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/13 14:33:56 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ typedef struct s_data
 	int		c_count;
 	int		e_count;
 	int		p_count;
+	int		c_reach;
+	int		e_reach;
 	char	*map_name;
 	char	**map_array;
 	char	**map_find;
@@ -45,6 +47,7 @@ typedef struct s_data
 	void	*i_door_open;
 	void	*i_door_closed;
 	void	*i_player;
+	void	*i_enemy;
 	int		i_height;
 	int		i_width;
 	int		k_count;
