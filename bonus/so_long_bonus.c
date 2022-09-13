@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 13:12:03 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/13 19:00:34 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/13 19:12:48 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int	paint_bg(t_data *s_data)
 
 	i = 0;
 	s_data->pos_y = 0;
+	mlx_clear_window (s_data->mlx_ptr, s_data->win_ptr);
 	while (s_data->map_array[i])
 	{
 		s_data->pos_x = 0;
