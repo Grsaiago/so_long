@@ -6,13 +6,11 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 16:59:12 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/09 19:12:33 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/13 19:21:46 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
-
-static int	ft_lencount(long n);
 
 char	*ft_itoa(long int n)
 {

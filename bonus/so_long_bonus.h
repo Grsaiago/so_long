@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 17:16:03 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/13 19:07:46 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/13 19:21:43 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ char	*ft_strchr(const char *s, int c);
 // ---UTIL FUNCTIONS--- //
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_itoa(long int n);
-
+int		ft_lencount(long n);
 // ---SO_LONG FUNCTIONS--- //
 void	initialize_images(t_data *s_data);
 // map validations functions //
