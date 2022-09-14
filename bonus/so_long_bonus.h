@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 17:16:03 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/14 10:54:18 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/14 18:10:59 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,16 +73,16 @@ int		ft_lencount(long n);
 // ---SO_LONG FUNCTIONS--- //
 void	initialize_images(t_data *s_data);
 // map validations functions //
-int		map_validate_name(t_data *s_data, char *map);
-int		map_validate_dimentions(t_data *s_data);
-int		map_validate_floor_ceiling(t_data *s_data, char *line,
-			int flag, int fd);
-int		map_validate_borders(t_data *s_data, char *line, int flag, int fd);
-int		map_validate_outline(t_data *s_data);
-int		count_components(t_data *s_data, char c, int p_x, int p_y);
+void    map_validate_name(t_data *s_data, char *map);
+void    map_validate_dimentions(t_data *s_data);
+void    map_validate_floor_ceiling(t_data *s_data, char *line, int fd);
+void    map_validate_borders(t_data *s_data, char *line, int fd);
+void    map_validate_outline(t_data *s_data);
+void    count_components(t_data *s_data, char *line, int x);
 int		map_validate_components(t_data s_data);
 void	validate_map(t_data *s_data, char *map);
 char	**create_map_array(t_data *s_data);
+void    dfs(t_data *s_data, int x, int y, char **map_sol);
 // screen refresh functions //
 void	img_put(t_data *s_data, char c, int i, int j);
 int		paint_bg(t_data *s_data);
@@ -98,4 +98,5 @@ int		close_window(t_data *s_data);
 void	free_map_array(char **array);
 void	ft_writenbr(int nbr);
 void	exit_func(t_data *s_data, const char *str);
+
 #endif
