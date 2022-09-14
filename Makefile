@@ -6,7 +6,7 @@
 #    By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/30 14:24:57 by gsaiago           #+#    #+#              #
-#    Updated: 2022/09/14 11:55:10 by gsaiago          ###   ########.fr        #
+#    Updated: 2022/09/14 16:15:33 by gsaiago          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ BONUS_F	=	./bonus/so_long_bonus.c\
 
 MAP = ./map.ber
 RM = rm -f
-CC = cc -Wall -Wextra -Werror
+CC = cc -g -Wall -Wextra -Werror
 DO_MLX = ./mlx/libmlx.a
 
 all: $(NAME)

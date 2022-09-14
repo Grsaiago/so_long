@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 17:16:03 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/14 10:54:47 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/14 17:46:16 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,12 @@ char	*ft_strchr(const char *s, int c);
 // ---SO_LONG FUNCTIONS--- //
 void	initialize_images(t_data *s_data);
 // map validation functions //
-int		map_validate_name(t_data *s_data, char *map);
-int		map_validate_dimentions(t_data *s_data);
-int		map_validate_floor_ceiling(t_data *s_data, char *line,
-			int flag, int fd);
-int		map_validate_borders(t_data *s_data, char *line, int flag, int fd);
-int		map_validate_outline(t_data *s_data);
-int		count_components(t_data *s_data, char c, int p_x, int p_y);
+void	map_validate_name(t_data *s_data, char *map);
+void	map_validate_dimentions(t_data *s_data);
+void	map_validate_floor_ceiling(t_data *s_data, char *line, int fd);
+void	map_validate_borders(t_data *s_data, char *line, int fd);
+void	map_validate_outline(t_data *s_data);
+void	count_components(t_data *s_data, char *line, int x);
 int		map_validate_components(t_data s_data);
 void	validate_map(t_data *s_data, char *map);
 char	**create_map_array(t_data *s_data);
