@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:26:04 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/14 17:50:51 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/14 18:20:41 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	count_components(t_data *s_data, char *line, int p_x)
 	while (line[y] && y < s_data->size_x)
 	{
 		if (!(line[y] == 'P' || line[y] == 'C' || line[y] == 'E'
-			|| line[y] == '1' || line[y] == '0'))
+				|| line[y] == '1' || line[y] == '0'))
 		{
 			free(line);
 			exit_func(s_data, "Error!\nInvalid components");
@@ -58,11 +58,11 @@ void	validate_components(t_data *s_data)
 		line = get_next_line(fd);
 		x++;
 	}
-	if(line)
+	if (line)
 		free(line);
 	close(fd);
-	if (s_data->p_count != 1 ||
-		s_data->e_count != 1 || s_data->c_count < 1)
+	if (s_data->p_count != 1
+		|| s_data->e_count != 1 || s_data->c_count < 1)
 		exit_func(s_data, "Error!\nInvalid components");
 	return ;
 }
@@ -96,7 +96,7 @@ void	validate_map(t_data *s_data, char *map)
 	validate_components(s_data);
 	s_data->map_array = create_map_array(s_data);
 	dfs(s_data, s_data->player_x, s_data->player_y, s_data->map_array);
-	if (s_data->c_reach != s_data->c_count 
+	if (s_data->c_reach != s_data->c_count
 		|| s_data->e_reach != s_data->e_count)
 		exit_func(s_data, "There is no valid path on the map");
 	free_map_array(s_data->map_array);

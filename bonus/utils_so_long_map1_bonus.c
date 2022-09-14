@@ -1,65 +1,70 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_so_long_bonus_map1.c                         :+:      :+:    :+:   */
+/*   utils_so_long_map1_bonus.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:26:04 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/14 14:05:12 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/14 18:23:21 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long_bonus.h"
+#include "../mandatory/so_long.h"
 
-int	count_components(t_data *s_data, char c, int p_x, int p_y)
+void	count_components(t_data *s_data, char *line, int p_x)
 {
-	if (!(c[p_y] == 'P' || c[p_y] == 'C' || c[p_y] == 'E'
-		|| c[p_y] == '0' || c[p_y] == '1' || c[p_y] == 'X'))
+	int	y;
+
+	y = 0;
+	while (line[y] && y < s_data->size_x)
 	{
-		free(c);
-		exit_func(s_data, "Error!\nOnly CPE01X");
+		if (!(line[y] == 'P' || line[y] == 'C' || line[y] == 'E'
+				|| line[y] == '1' || line[y] == '0' || line[y] == 'X'))
+		{
+			free(line);
+			exit_func(s_data, "Error!\nInvalid components");
+		}
+		if (line[y] == 'P')
+		{
+			s_data->p_count++;
+			s_data->player_x = p_x;
+			s_data->player_y = y;
+		}
+		else if (line[y] == 'C')
+			s_data->c_count++;
+		else if (line[y] == 'E')
+			s_data->e_count++;
+		y++;
 	}
-	if (c[p_y] == 'P')
-	{
-		s_data->p_count++;
-		s_data->player_x = p_x;
-		s_data->player_y = p_y;
-	}
-	else if (c[p_y] == 'C')
-		s_data->c_count++;
-	else if (c[p_y] == 'E')
-		s_data->e_count++;
-	return (0);
+	free(line);
+	return ;
 }
 
-int	validate_components(t_data *s_data)
+void	validate_components(t_data *s_data)
 {
 	int		fd;
-	int		y;
 	char	*line;
 	int		x;
 
 	fd = open(s_data->map_name, O_RDONLY);
 	if (fd < 2)
-		return (-1);
+		exit_func(s_data, "Error!\nInvalid fd");
 	x = 0;
 	line = get_next_line(fd);
 	while (line)
 	{
-		y = -1;
-		while (++y < (s_data->size_x))
-			count_components(s_data, line[y], x, y);
-		x++;
-		free(line);
+		count_components(s_data, line, x);
 		line = get_next_line(fd);
+		x++;
 	}
-	free(line);
+	if (line)
+		free(line);
 	close(fd);
 	if (s_data->p_count != 1
 		|| s_data->e_count != 1 || s_data->c_count < 1)
-		return (-1);
-	return (0);
+		exit_func(s_data, "Error!\nInvalid components");
+	return ;
 }
 
 void	dfs(t_data *s_data, int x, int y, char **map_sol)
@@ -85,19 +90,15 @@ void	dfs(t_data *s_data, int x, int y, char **map_sol)
 
 void	validate_map(t_data *s_data, char *map)
 {
-	if (map_validate_name(s_data, map) < 0)
-		exit_func(s_data, "Error!\nInvalid map name");
-	if (map_validate_dimentions(s_data) < 0)
-		exit_func(s_data, "Error!\nInvalid map dimention");
-	if (map_validate_outline(s_data) < 0)
-		exit_func(s_data, "Error!\nthe map must be surrounded by 1");
-	if (validate_components(s_data) < 0)
-		exit_func(s_data, "Error!\nThe map doesn't enough C, P, E");
+	map_validate_name(s_data, map);
+	map_validate_dimentions(s_data);
+	map_validate_outline(s_data);
+	validate_components(s_data);
 	s_data->map_array = create_map_array(s_data);
 	dfs(s_data, s_data->player_x, s_data->player_y, s_data->map_array);
 	if (s_data->c_reach != s_data->c_count
 		|| s_data->e_reach != s_data->e_count)
-		exit_func(s_data, "Error!\nThere is no valid path on the map");
+		exit_func(s_data, "There is no valid path on the map");
 	free_map_array(s_data->map_array);
 	s_data->map_array = create_map_array(s_data);
 	return ;

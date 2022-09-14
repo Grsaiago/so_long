@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 16:42:35 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/14 17:47:49 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/14 18:21:01 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@ void	map_validate_dimentions(t_data *s_data)
 		s_data->size_y++;
 		free(line);
 		line = get_next_line(fd);
-		//if (!line)
-		//	exit_func(s_data, "Error!\nGnl failed");
 	}
 	free(line);
 	close(fd);

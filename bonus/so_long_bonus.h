@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 17:16:03 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/14 18:10:59 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/14 18:15:24 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,16 +73,16 @@ int		ft_lencount(long n);
 // ---SO_LONG FUNCTIONS--- //
 void	initialize_images(t_data *s_data);
 // map validations functions //
-void    map_validate_name(t_data *s_data, char *map);
-void    map_validate_dimentions(t_data *s_data);
-void    map_validate_floor_ceiling(t_data *s_data, char *line, int fd);
-void    map_validate_borders(t_data *s_data, char *line, int fd);
-void    map_validate_outline(t_data *s_data);
-void    count_components(t_data *s_data, char *line, int x);
+void	map_validate_name(t_data *s_data, char *map);
+void	map_validate_dimentions(t_data *s_data);
+void	map_validate_floor_ceiling(t_data *s_data, char *line, int fd);
+void	map_validate_borders(t_data *s_data, char *line, int fd);
+void	map_validate_outline(t_data *s_data);
+void	count_components(t_data *s_data, char *line, int x);
 int		map_validate_components(t_data s_data);
 void	validate_map(t_data *s_data, char *map);
 char	**create_map_array(t_data *s_data);
-void    dfs(t_data *s_data, int x, int y, char **map_sol);
+void	dfs(t_data *s_data, int x, int y, char **map_sol);
 // screen refresh functions //
 void	img_put(t_data *s_data, char c, int i, int j);
 int		paint_bg(t_data *s_data);
