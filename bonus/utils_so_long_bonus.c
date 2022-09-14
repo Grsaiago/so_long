@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 16:59:12 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/13 19:21:46 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/14 11:52:04 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*ft_itoa(long int n)
 	return (itoa);
 }
 
-static int	ft_lencount(long n)
+int	ft_lencount(long n)
 {
 	int	len;
 

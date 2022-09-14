@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 17:16:03 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/13 19:21:43 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/14 10:54:18 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int		map_validate_floor_ceiling(t_data *s_data, char *line,
 			int flag, int fd);
 int		map_validate_borders(t_data *s_data, char *line, int flag, int fd);
 int		map_validate_outline(t_data *s_data);
-int		count_components(t_data *s_data, char c);
+int		count_components(t_data *s_data, char c, int p_x, int p_y);
 int		map_validate_components(t_data s_data);
 void	validate_map(t_data *s_data, char *map);
 char	**create_map_array(t_data *s_data);

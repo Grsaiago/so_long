@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 13:12:03 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/13 19:12:48 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/14 11:52:17 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	initialize_images(t_data *s_data)
 	if (!s_data->i_tile || !s_data->i_wall || !s_data->i_coin
 		|| !s_data->i_door_open || !s_data->i_door_closed
 		|| !s_data->i_player || !s_data->i_enemy)
-		exit_func(&s_data, "Error!\nSome image failed to initialize");
+		exit_func(s_data, "Error!\nSome image failed to initialize");
 	return ;
 }
 
