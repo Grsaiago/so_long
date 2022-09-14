@@ -6,7 +6,7 @@
 #    By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/30 14:24:57 by gsaiago           #+#    #+#              #
-#    Updated: 2022/09/14 16:15:33 by gsaiago          ###   ########.fr        #
+#    Updated: 2022/09/14 18:05:19 by gsaiago          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,9 @@ DO_MLX = ./mlx/libmlx.a
 all: $(NAME)
 
 clean: 
-	@make clean -C ./mlx 
+	@make clean -C ./mlx
+	@rm -rf $(NAME).dSYM	
+	@rm -rf $(BONUS_NAME).dSYM	
 
 fclean: clean 
 	@rm -f $(NAME)
