@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 14:34:20 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/14 11:35:01 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/19 12:44:57 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,7 @@ void	exit_func(t_data *s_data, const char *str)
 		mlx_clear_window (s_data->mlx_ptr, s_data->win_ptr);
 	if (s_data->mlx_ptr)
 		mlx_clear_window(s_data->mlx_ptr, s_data->win_ptr);
-	if (s_data->i_tile)
-		mlx_destroy_image(s_data->mlx_ptr, s_data->i_tile);
-	if (s_data->i_wall)
-		mlx_destroy_image(s_data->mlx_ptr, s_data->i_wall);
-	if (s_data->i_coin)
-		mlx_destroy_image(s_data->mlx_ptr, s_data->i_coin);
-	if (s_data->i_door_open)
-		mlx_destroy_image(s_data->mlx_ptr, s_data->i_door_open);
-	if (s_data->i_door_closed)
-		mlx_destroy_image(s_data->mlx_ptr, s_data->i_door_closed);
-	if (s_data->i_player)
-		mlx_destroy_image(s_data->mlx_ptr, s_data->i_player);
-	if (s_data->i_enemy)
-		mlx_destroy_image(s_data->mlx_ptr, s_data->i_enemy);
+	exit_images(s_data);
 	if (s_data->win_ptr)
 		mlx_destroy_window(s_data->mlx_ptr, s_data->win_ptr);
 	if (s_data->mlx_ptr)
@@ -55,20 +42,6 @@ void	exit_func(t_data *s_data, const char *str)
 	if (s_data->map_sol)
 		free_map_array(s_data->map_sol);
 	exit(EXIT_FAILURE);
-}
-
-void	free_map_array(char **array)
-{
-	int	i;
-
-	i = 0;
-	while (array[i])
-	{
-		free(array[i]);
-		i++;
-	}
-	free(array);
-	return ;
 }
 
 void	ft_writenbr(int nbr)
