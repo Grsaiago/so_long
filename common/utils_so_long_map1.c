@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:26:04 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/14 18:20:41 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/19 17:43:38 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void	validate_map(t_data *s_data, char *map)
 	dfs(s_data, s_data->player_x, s_data->player_y, s_data->map_array);
 	if (s_data->c_reach != s_data->c_count
 		|| s_data->e_reach != s_data->e_count)
-		exit_func(s_data, "There is no valid path on the map");
+		exit_func(s_data, "Error!\nThere is no valid path on the map");
 	free_map_array(s_data->map_array);
 	s_data->map_array = create_map_array(s_data);
 	return ;

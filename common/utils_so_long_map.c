@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 16:42:35 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/14 18:21:01 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/20 10:42:22 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	map_validate_dimentions(t_data *s_data)
 	int		fd;
 
 	fd = open(s_data->map_name, O_RDONLY);
+	if (fd < 2)
+		exit_func(s_data, "Error!\nMap file doesn't exist");
 	line = get_next_line(fd);
 	s_data->size_x = ft_strlen(line) - 1;
 	while (line)

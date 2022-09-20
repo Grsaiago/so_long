@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 13:12:03 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/14 10:25:18 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/20 18:39:30 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char *argv[])
 	validate_map(&s_data, argv[1]);
 	s_data.mlx_ptr = mlx_init();
 	if (!s_data.mlx_ptr)
-		exit_func(&s_data, "Error!\nmlx failed to initialized 😅");
+		exit_func(&s_data, "Error!\nmlx failed to initialize 😅");
 	initialize_images(&s_data);
 	s_data.win_ptr = mlx_new_window(s_data.mlx_ptr,
 			s_data.size_x * s_data.i_width,

@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 13:12:03 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/14 11:52:17 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/20 18:40:34 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int argc, char *argv[])
 	initialize_images(&s_data);
 	s_data.win_ptr = mlx_new_window(s_data.mlx_ptr,
 			s_data.size_x * s_data.i_width,
-			s_data.size_y * s_data.i_height, "so_long");
+			s_data.size_y * s_data.i_height, "so_long_bonus");
 	paint_bg(&s_data);
 	mlx_key_hook(s_data.win_ptr, &keyhook_main_call, &s_data);
 	mlx_hook(s_data.win_ptr, 17, 0, &close_window, &s_data);
