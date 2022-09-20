@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 17:16:03 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/14 18:15:24 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/19 10:02:18 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,5 +98,6 @@ int		close_window(t_data *s_data);
 void	free_map_array(char **array);
 void	ft_writenbr(int nbr);
 void	exit_func(t_data *s_data, const char *str);
+void	exit_images(t_data *s_data);
 
 #endif
