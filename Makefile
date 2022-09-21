@@ -6,7 +6,11 @@
 #    By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/30 14:24:57 by gsaiago           #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2022/09/20 13:08:49 by gsaiago          ###   ########.fr        #
+=======
+#    Updated: 2022/09/21 10:41:43 by gsaiago          ###   ########.fr        #
+>>>>>>> bec558ebae8b97ca335eeb8a959ecbfce2f11c43
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +21,7 @@ COMMON =	./common/utils_so_long_exit.c\
 			./common/utils_so_long_exit1.c\
 	   		./common/utils_so_long_map.c\
 	   		./common/utils_so_long_map1.c\
+	   		./common/utils_so_long_map2.c\
 	   		./common/get_next_line.c\
 	   		./common/get_next_line_utils.c\
 
@@ -42,6 +47,7 @@ clean:
 fclean: clean 
 	@rm -f $(NAME)
 	@rm -f $(BONUS_NAME)
+	@rm -rf *.dSYM
 
 $(NAME): $(DO_MLX) $(COMMON) $(MANDATORY) 
 		@$(CC) -o $(NAME) $(COMMON) $(MANDATORY) -Lmlx -lmlx -framework OpenGL -framework AppKit 
@@ -58,7 +64,11 @@ t: re
 lldb: re
 	@lldb $(NAME) $(MAP)
 val: re
+<<<<<<< HEAD
 	@valgrind --leak-check=full --suppressions=val.supp ./$(NAME) $(MAP)
+=======
+	@valgrind --suppressions=val.supp ./$(NAME) $(MAP)
+>>>>>>> bec558ebae8b97ca335eeb8a959ecbfce2f11c43
 
 bonus: $(DO_MLX) $(COMMON) $(BONUS_F)
 		@$(CC) -o $(BONUS_NAME) $(COMMON) $(BONUS_F) -Lmlx -lmlx -framework OpenGL -framework AppKit

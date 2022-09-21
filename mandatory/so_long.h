@@ -6,7 +6,11 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 17:16:03 by gsaiago           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/09/19 16:04:17 by gsaiago          ###   ########.fr       */
+=======
+/*   Updated: 2022/09/21 10:52:23 by gsaiago          ###   ########.fr       */
+>>>>>>> bec558ebae8b97ca335eeb8a959ecbfce2f11c43
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +78,10 @@ void	map_validate_floor_ceiling(t_data *s_data, char *line, int fd);
 void	map_validate_borders(t_data *s_data, char *line, int fd);
 void	map_validate_outline(t_data *s_data);
 void	count_components(t_data *s_data, char *line, int x);
-int		map_validate_components(t_data s_data);
+void	validate_components(t_data *s_data);
 void	validate_map(t_data *s_data, char *map);
 char	**create_map_array(t_data *s_data);
+void	validate_map_path(t_data *s_data);
 void	dfs(t_data *s_data, int x, int y, char **map_sol);
 // screen refresh functions //
 void	img_put(t_data *s_data, char c, int i, int j);

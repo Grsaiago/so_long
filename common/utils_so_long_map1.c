@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:26:04 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/14 18:20:41 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/21 10:59:50 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,57 +71,19 @@ void	dfs(t_data *s_data, int x, int y, char **map_sol)
 {
 	if (map_sol[x][y] == '1' || map_sol[x][y] == 'X')
 		return ;
-	if (map_sol[x][y] == 'C')
-		s_data->c_reach++;
-	if (map_sol[x][y] == 'E')
-		s_data->e_reach++;
 	if (map_sol[x][y] != '1')
 		map_sol[x][y] = '1';
-	if (map_sol[x][y - 1] != '1' && map_sol[x][y - 1] != 'X')
+	if (map_sol[x][y - 1] != '1' && map_sol[x][y - 1] != 'X'
+			&& map_sol[x][y - 1] != 'E')
 		dfs(s_data, x, y - 1, map_sol);
-	if (map_sol[x][y + 1] != '1' && map_sol[x][y + 1] != 'X')
+	if (map_sol[x][y + 1] != '1' && map_sol[x][y + 1] != 'X' &&
+			map_sol[x][y + 1] != 'E')
 		dfs(s_data, x, y + 1, map_sol);
-	if (map_sol[x - 1][y] != '1' && map_sol[x - 1][y] != 'X')
+	if (map_sol[x - 1][y] != '1' && map_sol[x - 1][y] != 'X' &&
+			map_sol[x - 1][y] != 'E')
 		dfs(s_data, x - 1, y, map_sol);
-	if (map_sol[x + 1][y] != '1' && map_sol[x + 1][y] != 'X')
+	if (map_sol[x + 1][y] != '1' && map_sol[x + 1][y] != 'X' &&
+			map_sol[x + 1][y] != 'E')
 		dfs(s_data, x + 1, y, map_sol);
 	return ;
-}
-
-void	validate_map(t_data *s_data, char *map)
-{
-	map_validate_name(s_data, map);
-	map_validate_dimentions(s_data);
-	map_validate_outline(s_data);
-	validate_components(s_data);
-	s_data->map_array = create_map_array(s_data);
-	dfs(s_data, s_data->player_x, s_data->player_y, s_data->map_array);
-	if (s_data->c_reach != s_data->c_count
-		|| s_data->e_reach != s_data->e_count)
-		exit_func(s_data, "There is no valid path on the map");
-	free_map_array(s_data->map_array);
-	s_data->map_array = create_map_array(s_data);
-	return ;
-}
-
-char	**create_map_array(t_data *s_data)
-{
-	int		i;
-	int		fd;
-	char	**array;
-
-	array = ft_calloc(s_data->size_y + 1, sizeof(char *));
-	if (!array)
-		return (NULL);
-	fd = open(s_data->map_name, O_RDONLY);
-	if (fd < 2)
-		return (NULL);
-	i = 0;
-	while (i <= s_data->size_y)
-	{
-		array[i] = get_next_line(fd);
-		i++;
-	}
-	close(fd);
-	return (array);
 }
