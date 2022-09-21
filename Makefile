@@ -6,7 +6,7 @@
 #    By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/30 14:24:57 by gsaiago           #+#    #+#              #
-#    Updated: 2022/09/20 18:42:26 by gsaiago          ###   ########.fr        #
+#    Updated: 2022/09/21 10:41:43 by gsaiago          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ COMMON =	./common/utils_so_long_exit.c\
 			./common/utils_so_long_exit1.c\
 	   		./common/utils_so_long_map.c\
 	   		./common/utils_so_long_map1.c\
+	   		./common/utils_so_long_map2.c\
 	   		./common/get_next_line.c\
 	   		./common/get_next_line_utils.c\
 

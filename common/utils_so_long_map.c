@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 16:42:35 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/20 10:42:22 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/21 10:56:35 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	map_validate_dimentions(t_data *s_data)
 	s_data->size_x = ft_strlen(line) - 1;
 	while (line)
 	{
-		if (s_data->size_x != (int)ft_strlen(line) - 1 || s_data->size_x < 5)
+		if (s_data->size_x != (int)ft_strlen(line) - 1 || s_data->size_x < 4)
 		{
 			free(line);
 			close(fd);
