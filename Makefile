@@ -6,7 +6,7 @@
 #    By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/30 14:24:57 by gsaiago           #+#    #+#              #
-#    Updated: 2022/09/19 15:55:41 by gsaiago          ###   ########.fr        #
+#    Updated: 2022/09/20 13:08:49 by gsaiago          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,7 @@ t: re
 lldb: re
 	@lldb $(NAME) $(MAP)
 val: re
-	@valgrind --leak-check=full --suppressions=suppression_valgrind ./$(NAME) $(MAP)
+	@valgrind --leak-check=full --suppressions=val.supp ./$(NAME) $(MAP)
 
 bonus: $(DO_MLX) $(COMMON) $(BONUS_F)
 		@$(CC) -o $(BONUS_NAME) $(COMMON) $(BONUS_F) -Lmlx -lmlx -framework OpenGL -framework AppKit

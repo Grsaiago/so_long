@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 13:12:03 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/09/14 10:25:18 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/09/20 18:34:38 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@ int	main(int argc, char *argv[])
 	if (argc != 2)
 		exit_func(&s_data, "Error!\nInvalid arguments 😭");
 	validate_map(&s_data, argv[1]);
-	s_data.mlx_ptr = mlx_init();
-	if (!s_data.mlx_ptr)
-		exit_func(&s_data, "Error!\nmlx failed to initialized 😅");
-	initialize_images(&s_data);
-	s_data.win_ptr = mlx_new_window(s_data.mlx_ptr,
-			s_data.size_x * s_data.i_width,
-			s_data.size_y * s_data.i_height, "so_long");
-	paint_bg(&s_data);
-	mlx_key_hook(s_data.win_ptr, &keyhook_main_call, &s_data);
-	mlx_hook(s_data.win_ptr, 17, 0, &close_window, &s_data);
-	mlx_loop(s_data.mlx_ptr);
+//	s_data.mlx_ptr = mlx_init();
+//	if (!s_data.mlx_ptr)
+//		exit_func(&s_data, "Error!\nmlx failed to initialized 😅");
+//	initialize_images(&s_data);
+//	s_data.win_ptr = mlx_new_window(s_data.mlx_ptr,
+//			s_data.size_x * s_data.i_width,
+//			s_data.size_y * s_data.i_height, "so_long");
+//	paint_bg(&s_data);
+//	mlx_key_hook(s_data.win_ptr, &keyhook_main_call, &s_data);
+//	mlx_hook(s_data.win_ptr, 17, 0, &close_window, &s_data);
+//	mlx_loop(s_data.mlx_ptr);
 }
 
 void	initialize_images(t_data *s_data)
